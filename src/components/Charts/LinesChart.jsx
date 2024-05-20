@@ -28,7 +28,7 @@ ChartJS.register(
 export default function LinesChart() {
   const { baseCurrency } = useSelector((store) => store.currency);
   const { timeFrame } = useSelector((store) => store.timeFrame);
-  const { currentCoins } = useSelector((store) => store.cryptoSelection);
+  const { currentCoin } = useSelector((store) => store.cryptoSelection);
 
   const options = {
     responsive: true,
@@ -48,7 +48,7 @@ export default function LinesChart() {
   };
 
   const { data, status } = useGetCoinDataByDaysQuery({
-    id: currentCoins[0],
+    id: currentCoin,
     vs_currency: baseCurrency.id,
     days: timeFrame,
     interval: timeFrame !== 1 ? "daily" : "",
@@ -62,7 +62,7 @@ export default function LinesChart() {
     dataSet.labels = labels;
     dataSet.datasets = [
       {
-        label: currentCoins[0].toUpperCase(),
+        label: currentCoin.toUpperCase(),
         data: prices,
         borderColor: colors[0],
         backgroundColor: colors[1],

@@ -1,14 +1,13 @@
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
+import { setCurrentCoin } from "../features/cryptoSelector/cryptoSelectorSlice";
 import { useState } from "react";
-import { addToCurrentCoins } from "../features/cryptoSelector/cryptoSelectorSlice";
 
 const CryptoSelector = () => {
   const [isCryptoMenOpen, setIsCryptoMenOpen] = useState(false);
   const dispatch = useDispatch();
-  const { coinPool, currentCoins } = useSelector(
-    (store) => store.cryptoSelection
-  );
+
+  const { coinPool } = useSelector((store) => store.cryptoSelection);
 
   return (
     <div className="relative flex justify-between items-center shadow-md bg-gray-100 rounded-lg px-5 py-1 border border-gray-300">
@@ -25,15 +24,9 @@ const CryptoSelector = () => {
             <div
               className="flex w-full hover:bg-orange-50 cursor-pointer rounded-lg py-3 pl-1 md:text-base text-sm text-gray-700"
               key={idx}
+              onClick={() => dispatch(setCurrentCoin(coin))}
             >
-              <input
-                type="checkbox"
-                id={coin}
-                className="mr-2"
-                onClick={() => dispatch(addToCurrentCoins(coin))}
-                defaultChecked={currentCoins.includes(coin)}
-              />
-              <label htmlFor={coin}>{coin.toUpperCase()}</label>
+              {coin.toUpperCase()}
             </div>
           ))}
         </div>
