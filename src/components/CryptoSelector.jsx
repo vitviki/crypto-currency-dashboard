@@ -24,7 +24,10 @@ const CryptoSelector = () => {
             <div
               className="flex w-full hover:bg-orange-50 cursor-pointer rounded-lg py-3 pl-1 md:text-base text-sm text-gray-700"
               key={idx}
-              onClick={() => dispatch(setCurrentCoin(coin))}
+              onClick={() => {
+                dispatch(setCurrentCoin(coin));
+                setIsCryptoMenOpen(false);
+              }}
             >
               {coin.toUpperCase()}
             </div>
