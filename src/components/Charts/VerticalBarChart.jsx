@@ -36,10 +36,10 @@ export const options = {
 export default function VerticalBarChart() {
   const { baseCurrency } = useSelector((store) => store.currency);
   const { timeFrame } = useSelector((store) => store.timeFrame);
-  const { currentCoins } = useSelector((store) => store.cryptoSelection);
+  const { currentCoin } = useSelector((store) => store.cryptoSelection);
 
   const { data, status } = useGetCoinDataByDaysQuery({
-    id: currentCoins[0],
+    id: currentCoin,
     vs_currency: baseCurrency.id,
     days: timeFrame,
     interval: timeFrame !== 1 ? "daily" : "",
@@ -47,13 +47,13 @@ export default function VerticalBarChart() {
 
   const dataSet = {};
 
-  if (status === "fulfilled" && currentCoins.length > 0) {
+  if (status === "fulfilled") {
     const { labels, prices } = generateLabelAndData(timeFrame, data.prices);
     const colors = generateRandomColor();
     dataSet.labels = labels;
     dataSet.datasets = [
       {
-        label: currentCoins[0],
+        label: currentCoin,
         data: prices,
         borderColor: colors[0],
         backgroundColor: colors[1],
