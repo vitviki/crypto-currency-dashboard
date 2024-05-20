@@ -19,7 +19,7 @@ const CryptoSelector = () => {
         {isCryptoMenOpen ? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
       </button>
       {isCryptoMenOpen && (
-        <div className="bg-white absolute top-10 lg:h-[200px] h-[108px] left-1 flex flex-col items-start rounded-lg p-1 w-full overflow-scroll border border-gray-500 z-10">
+        <div className="bg-white absolute top-10 lg:h-[200px] h-[108px] left-1 flex flex-col items-start rounded-lg p-1 w-full overflow-scroll no-scrollbar border border-gray-500 z-10">
           {coinPool.map((coin, idx) => (
             <div
               className="flex w-full hover:bg-orange-50 cursor-pointer rounded-lg py-3 pl-1 md:text-base text-sm text-gray-700"
