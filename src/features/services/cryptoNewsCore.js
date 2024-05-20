@@ -3,11 +3,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const cryptoNewsCoreAPI = createApi({
   reducerPath: "cryptoNewsCoreAPI",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://cryptocurrency-news2.p.rapidapi.com/v1",
+    baseUrl: import.meta.env.VITE_REACT_APP_CRYPTO_NEWS_BASE_URL,
     prepareHeaders: (headers) => {
       headers.set(
         "x-rapidapi-key",
-        "f4cf18c6c3msh149996a33bbe6ffp17de19jsnb7a365cd77dc"
+        import.meta.env.VITE_REACT_APP_CRYPTO_NEW_API_KEY
       );
       return headers;
     },

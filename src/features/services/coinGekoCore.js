@@ -3,9 +3,12 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const coinGekoCoreAPI = createApi({
   reducerPath: "coinGekoCoreAPI",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.coingecko.com/api/v3",
+    baseUrl: import.meta.env.VITE_REACT_APP_COINGEKO_BASE_URL,
     prepareHeaders: (headers) => {
-      headers.set("x-cg-demo-api-key", "CG-eioKEvcS2ta7uNeWJPgbs9t2");
+      headers.set(
+        "x-cg-demo-api-key",
+        import.meta.env.VITE_REACT_APP_COINKGEKO_API_KEY
+      );
       return headers;
     },
   }),
